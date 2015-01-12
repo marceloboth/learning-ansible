@@ -1,0 +1,10 @@
+---
+- hosts: host1
+  remote_user: vagrant
+  tasks:
+    - action: shell /bin/ls
+      register: list_files
+
+    - assert:
+        that:
+          - "'testfile.text' in list_files.stdout_lines"

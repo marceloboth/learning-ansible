@@ -1,0 +1,14 @@
+---
+- hosts: host1
+  gather_facts: False
+  remote_user: vagrant
+  vars:
+    port: 8080
+  tasks:
+    - name: Install apache2 package
+      apt: name=apache2 state=latest
+      sudo: yes
+
+    - name: Check apache2 service
+      service: name=apache2 state=started enabled=yes
+      sudo: yes
